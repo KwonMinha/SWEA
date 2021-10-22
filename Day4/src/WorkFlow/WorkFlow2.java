@@ -1,10 +1,11 @@
-package WorkFlow;
 /**
  * @author minha
  * 2021. 10. 21.
  * 1267. [S/W 문제해결 응용] 10일차 - 작업순서
  * 인접행렬 + BFS
  */
+
+package WorkFlow;
 
 import java.io.BufferedReader;
 import java.io.IOException;
