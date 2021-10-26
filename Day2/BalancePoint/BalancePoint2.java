@@ -2,14 +2,14 @@
  * @author minha
  * 2021. 10. 27.
  * 1245. [S/W 문제해결 응용] 2일차 - 균형점
- * for문 100번 돌림 
+ * 오차 전까지 while문 
  */
 
 package BalancePoint;
 
 import java.util.Scanner;
 
-class BalancePoint {
+class BalancePoint2 {
 	static int N;
 	static int[] xArray;
 	static int[] mArray;
@@ -66,7 +66,7 @@ class BalancePoint {
 			left = xArray[i];
 			right = xArray[i+1];
 			
-			for(int j = 0; j < 100; j++) {
+			while(true) {
 				mid = (left + right) / 2;
 				
 				powerLeft = getPower(0, i, mid);
@@ -77,6 +77,9 @@ class BalancePoint {
 				} else {
 					right = mid;
 				}
+				
+				if(right - left < 1e-12)
+					break;
 			}
 			
 			answer[i] = mid;

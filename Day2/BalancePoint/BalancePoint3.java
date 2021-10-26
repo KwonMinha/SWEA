@@ -2,37 +2,42 @@
  * @author minha
  * 2021. 10. 27.
  * 1245. [S/W 문제해결 응용] 2일차 - 균형점
- * for문 100번 돌림 
+ * while문 + BufferedReader
  */
 
 package BalancePoint;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-class BalancePoint {
+public class BalancePoint3 {
 	static int N;
 	static int[] xArray;
 	static int[] mArray;
 	static double[] answer;
 	
 	public static void main(String args[]) throws Exception {
-		Scanner sc = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
 		
-		int T = sc.nextInt();
+		int T = Integer.parseInt(br.readLine());
 
 		for(int test_case = 1; test_case <= T; test_case++) {
-			N = sc.nextInt();
+			N = Integer.parseInt(br.readLine());
 			
 			xArray = new int[N];
 			mArray = new int[N];
 			answer = new double[N];
 			
+			st = new StringTokenizer(br.readLine());
+			
 			for(int i = 0; i < N; i++) {
-				xArray[i] = sc.nextInt();
+				xArray[i] = Integer.parseInt(st.nextToken());
 			}
 			
 			for(int i = 0; i < N; i++) {
-				mArray[i] = sc.nextInt();
+				mArray[i] = Integer.parseInt(st.nextToken());
 			}
 
 			binarySearch();
@@ -66,7 +71,7 @@ class BalancePoint {
 			left = xArray[i];
 			right = xArray[i+1];
 			
-			for(int j = 0; j < 100; j++) {
+			while(true) {
 				mid = (left + right) / 2;
 				
 				powerLeft = getPower(0, i, mid);
@@ -77,6 +82,9 @@ class BalancePoint {
 				} else {
 					right = mid;
 				}
+				
+				if(right - left < 1e-12)
+					break;
 			}
 			
 			answer[i] = mid;
