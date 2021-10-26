@@ -22,18 +22,20 @@ class PrimeNumber {
 		for(int test_case = 1; test_case <= T; test_case++) {
 			st = new StringTokenizer(br.readLine());
 
+			// 5분 안에 완제품을 만들 확률
 			double skillA = Double.parseDouble(st.nextToken()) / 100;
 			double skillB = Double.parseDouble(st.nextToken()) / 100;
 
 			double A = 0, B = 0;
 
 			for(int i = 0; i < primeNumbers.length; i++) {
+				// 18개중 소수 N만큼 뽑는 경우의 수  * 각 경우에서 N개 만드는데 성공할 확률 * 각 경우에서 N개 만드는데 실패할 확률
 				A += combination(18, primeNumbers[i]) * Math.pow(skillA, primeNumbers[i]) * Math.pow(1-skillA, 18-primeNumbers[i]);
 				B += combination(18, primeNumbers[i]) * Math.pow(skillB, primeNumbers[i]) * Math.pow(1-skillB, 18-primeNumbers[i]);
 			}
-
-			//double result = A + B - (A * B);
-			double result = 1 - (1 - A) * (1 - B);
+			
+			//double result = 1 - (1 - A) * (1 - B);
+			double result =  A + B - (A * B);
 
 			sb.append("#" + test_case + " " + String.format("%.6f", result) + "\n");			
 		}
@@ -41,6 +43,7 @@ class PrimeNumber {
 		System.out.println(sb.toString());
 	}
 
+	// 조합의 수 구하기 - nCr
 	public static int combination(int n, int r) {
 		if(n == r || r == 0) 
 			return 1; 
