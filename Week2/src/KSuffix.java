@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class KSuffix {
 	
@@ -32,13 +31,14 @@ public class KSuffix {
 				suffixList.add(suffix);
 			}
 			
-			Collections.sort(suffixList, Comparator.reverseOrder());
+			Collections.sort(suffixList); // 오름차순 정렬 
 			
 			String result = "";
+			
 			if(suffixList.size() < K) {
 				result = "none";
 			} else {
-				result = suffixList.get(K);
+				result = suffixList.get(K-1);
 			}
 			
 			sb.append("#" + test_case + " " + result + "\n");
