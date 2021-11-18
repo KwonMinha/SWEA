@@ -12,24 +12,6 @@ import java.util.Collections;
 import java.util.StringTokenizer;
 
 class BuildHighway {
-	
-	static class Node implements Comparable<Node> {
-		int x;
-		int y;
-		double w;
-
-		Node(int x, int y, double w) {
-			this.x = x;
-			this.y = y;
-			this.w = w;
-		}
-
-		@Override
-		public int compareTo(Node o) {
-			return o.w >= w ? -1 : 1;
-		}
-	}
-	
 	static int N, M;
 	static int[] parent;
 	
@@ -45,7 +27,7 @@ class BuildHighway {
 			M = Integer.parseInt(br.readLine());
 			
 			parent = new int[N+1];
-			for(int i = 1; i < N+1; i++) {
+			for(int i = 0; i < N+1; i++) {
 				parent[i] = i;
 			}
 			
@@ -97,4 +79,21 @@ class BuildHighway {
 		parent[b] = a;
 	}
 	
+}
+
+class Node implements Comparable<Node> {
+	int x;
+	int y;
+	double w;
+
+	Node(int x, int y, double w) {
+		this.x = x;
+		this.y = y;
+		this.w = w;
+	}
+
+	@Override
+	public int compareTo(Node o) {
+		return o.w >= w ? -1 : 1;
+	}
 }
