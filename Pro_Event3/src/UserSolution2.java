@@ -1,18 +1,18 @@
 class UserSolution2 {	
-	
+
 	void mstrcpy(char dst[], char src[])
 	{
 		int c = 0;
 		while((dst[c] = src[c]) != 0) ++c;
 	}
-	
+
 	int mstrcmp(char str1[], char str2[])
 	{
 		int c = 0;
 		while(str1[c] != 0 && str1[c] == str2[c]) ++c;
 		return str1[c] - str2[c];
 	}
-	
+
 	class Event {
 		char name[];
 		int groupId;
@@ -36,15 +36,15 @@ class UserSolution2 {
 
 		for(int i = 0; i < 1000; i++) userEventN[i] = 0;
 	}
-	
+
 	int find_eventInd(char ename[], int groupid) {
 		for(int i = 0; i < eventNameN[groupid]; i++) 
 			if(mstrcmp(eventName[groupid][i], ename) == 0)
 				return i;
-		
+
 		return eventNameN[groupid];
 	}
-	
+
 	int find_groupid(int uid, char ename[]) {
 		for(int i = 0; i < userEventN[uid]; i++)
 			if(mstrcmp(userEvent[uid][i].name, ename) == 0)
@@ -77,7 +77,7 @@ class UserSolution2 {
 				return;
 			}
 	}
-	
+
 	int deleteEvent(int uid, char ename[])
 	{
 		int groupid = find_groupid(uid, ename);
@@ -85,13 +85,13 @@ class UserSolution2 {
 		int eventInd = find_eventInd(ename, groupid);
 		if(eventInd == eventNameN[groupid]) return 0;
 		int res = 1;
-		
+
 		if(eventUid[groupid][eventInd][0] == uid) {
 			res = eventUidN[groupid][eventInd];
 			for(int i = 0; i < eventUidN[groupid][eventInd]; i++) {
 				delete_user_event(eventUid[groupid][eventInd][i], ename);
 			}
-			
+
 			int eventN = eventNameN[groupid];
 			if(eventInd != eventN -1) {
 				mstrcpy(eventName[groupid][eventInd], eventName[groupid][eventN-1]);
@@ -112,10 +112,10 @@ class UserSolution2 {
 				eventUid[groupid][eventInd][userInd] = eventUid[groupid][eventInd][userN-1];
 			eventUidN[groupid][eventInd]--;
 		}
-		
+
 		return res;
 	}
-	
+
 	void change_user_event(int uid, char ename[], char cname[]) {
 		for(int i = 0; i < userEventN[uid]; i++) {
 			if(mstrcmp(userEvent[uid][i].name, ename) == 0) {
@@ -131,7 +131,7 @@ class UserSolution2 {
 		if(groupid == -1) return 0;
 		int eventInd = find_eventInd(ename, groupid);
 		int res = 1;
-		
+
 		if(eventUid[groupid][eventInd][0] == uid) {
 			mstrcpy(eventName[groupid][eventInd], cname);
 			for(int i = 0; i < eventUidN[groupid][eventInd]; i++) 
@@ -140,7 +140,7 @@ class UserSolution2 {
 		} else {
 			delete_user_event(uid, ename);
 			int userInd = 0;
-			
+
 			for(int i = 0; i < eventUidN[groupid][eventInd]; i++)
 				if(eventUid[groupid][eventInd][i] == uid)
 					userInd = i;
