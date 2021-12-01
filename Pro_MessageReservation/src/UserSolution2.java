@@ -2,14 +2,15 @@
  * @author minha
  * 2021. 12. 1.
  * 쪽찌 예약 전송 
- * Sending의 우선순위큐에서 아예 보낸 사람의 보낸 쪽찌함에 메세지가 없는 경우(삭제한 경우) 예약 시간이 남은 대기 메세지는 패스
+ * PriorityQueue에서 직접 메세지 삭제하는 코드 (equlas 메소드 오버라이드해서 객체 비교 해야 제대로 삭제됨)
  */
 
+/*
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
-class UserSolution
+class UserSolution2
 {
 	private final static int MAXM = 3;
 
@@ -43,9 +44,6 @@ class UserSolution
 		while(!pq.isEmpty() && pq.peek().sTime <= cTimestamp) {
 			int mID = pq.poll().mID;
 			Message msg = messageMap.get(mID);
-			
-			if(!sentBox[msg.sID].contains(mID)) continue; // 삭제된 메세지라면 패스 
-			
 			inBox[msg.rID].add(mID);
 		}
 	}
@@ -63,7 +61,8 @@ class UserSolution
 			mIDList[cnt] = mID;
 			uIDList[cnt] = messageMap.get(mID).rID;
 			readList[cnt] = messageMap.get(mID).read;
-			cnt++;
+
+			cnt++; // 배열에 다 넣고 ++ 해야함 
 		}
 
 		return cnt;
@@ -109,10 +108,16 @@ class UserSolution
 		sending(cTimestamp);
 		
 		if(sentBox[uID].remove(Integer.valueOf(mID))) {
+			Message temp = new Message(mID, messageMap.get(mID).sTime);
+			pq.remove(temp);
+			
 			return 1;
 		} 
 
 		if(inBox[uID].remove(Integer.valueOf(mID))) {
+			Message temp = new Message(mID, messageMap.get(mID).sTime);
+			pq.remove(temp);
+			
 			return 1;
 		} 
 
@@ -150,5 +155,15 @@ class Message implements Comparable<Message>{
 			return this.sTime - o.sTime;
 		}
 	}
-	
+
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof Message){
+			Message c = (Message)o;
+			return mID == c.mID && sTime == c.sTime;
+		}
+		return false;
+	}
+
 }
+*/
