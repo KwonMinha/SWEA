@@ -44,30 +44,45 @@ class HalfLife {
 				S[i] = Integer.parseInt(st.nextToken());
 			}
 
-			sb.append("#" + test_case + " " + parametricSearch(min, max) + "\n");
+			sb.append("#" + test_case + " " + parametricSearch(min, max, 0) + "\n");
 		}
 
 		System.out.println(sb.toString());
 	}
-
-	public static int parametricSearch(int low, int high) {
-		if(low == high) 
-			return low;
-
-		while(low < high) {
+	
+	static int parametricSearch(int low, int high, int ans) {
+	while(low <= high) {
 			int mid = (low + high) / 2; 
 
 			if(isSave(mid)) { 
-				high = mid;
+				ans = mid;
+				high = mid - 1;
 			} else {
-				low = mid+1; 
+				low = mid + 1;
 			}
 		}
 
-		return low; 
+		return ans; 
 	}
 
-	public static boolean isSave(int mid) {
+//	static int parametricSearch(int low, int high) {
+//		if(low == high) 
+//			return low;
+//
+//		while(low < high) {
+//			int mid = (low + high) / 2; 
+//
+//			if(isSave(mid)) { 
+//				high = mid;
+//			} else {
+//				low = mid+1; 
+//			}
+//		}
+//
+//		return low; 
+//	}
+
+	static boolean isSave(int mid) {
 		int index = 0;
 		
 		for(int i = 0; i < W.length; i++) {
