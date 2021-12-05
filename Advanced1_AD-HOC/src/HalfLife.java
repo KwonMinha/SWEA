@@ -44,13 +44,13 @@ class HalfLife {
 				S[i] = Integer.parseInt(st.nextToken());
 			}
 
-			sb.append("#" + test_case + " " + parametricSearch(min, max, max) + "\n");
+			sb.append("#" + test_case + " " + parametricSearch(min, max) + "\n");
 		}
 
 		System.out.println(sb.toString());
 	}
 
-	public static int parametricSearch(int low, int high, int ans) {
+	public static int parametricSearch(int low, int high) {
 		if(low == high) 
 			return low;
 
@@ -58,14 +58,13 @@ class HalfLife {
 			int mid = (low + high) / 2; 
 
 			if(isSave(mid)) { 
-				ans = mid;
 				high = mid;
 			} else {
 				low = mid+1; 
 			}
 		}
 
-		return ans; 
+		return low; 
 	}
 
 	public static boolean isSave(int mid) {
