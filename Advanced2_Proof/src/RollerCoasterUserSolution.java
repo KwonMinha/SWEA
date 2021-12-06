@@ -1,3 +1,8 @@
+/**
+ * @author minha
+ * 2021. 12. 7.
+ * [2강 1번] 롤러코스터
+ */
 
 public class RollerCoasterUserSolution {
 	static Element[] sorted;
@@ -7,14 +12,16 @@ public class RollerCoasterUserSolution {
 		sorted = new Element[N];
 		arr = new Element[N];
 		
-		for(int i = 0; i < N; i++)
+		for(int i = 0; i < N; i++) {
 			arr[i] = new Element(a[i], b[i]);
+		}
 		
 		merge_sort(0, N-1);
 		
 		int v = 1;
-		for(int i = 0; i < N; i++)
+		for(int i = 0; i < N; i++) {
 			v = (int) (((long)(sorted[i].a) * v + sorted[i].b) % 1000000007);
+		}
 		
 		return v;
 	}
