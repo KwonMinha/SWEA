@@ -19,7 +19,7 @@ public class Anagram {
 			int L1 = S1.length();
 			int L2 = S2.length();
 			
-			int answer = new UserSolution().FindAnagram(L1, S1, L2, S2);
+			int answer = new AnagramUserSolution().FindAnagram(L1, S1, L2, S2);
 			
 			System.out.println("#"+ tc + " " + answer);
 		}
