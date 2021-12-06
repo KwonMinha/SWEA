@@ -5,6 +5,19 @@
  */
 
 public class RollerCoasterUserSolution {
+	
+	static class Element {
+		int a;
+		int b;
+		double c;
+		
+		Element(int a, int b) {
+			this.a = a;
+			this.b = b;
+			this.c = (double) (a-1) / b;
+		}
+	}
+	
 	static Element[] sorted;
 	static Element[] arr;
 
@@ -59,17 +72,5 @@ public class RollerCoasterUserSolution {
 		for(int i = left; i <= right; i++) {
 			arr[i] = sorted[i];
 		}
-	}
-}
-
-class Element {
-	int a;
-	int b;
-	double c;
-	
-	Element(int a, int b) {
-		this.a = a;
-		this.b = b;
-		this.c = (double) (a-1) / b;
 	}
 }
