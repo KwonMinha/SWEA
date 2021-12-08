@@ -28,7 +28,7 @@ class UserSolution {
 			appName = new String(mApp[i]);
 
 			App app = new App(appName);
-
+			
 			appMap.put(appName, app);
 			scoreHeap.push(app);
 			numHeap.push(app);
@@ -149,7 +149,7 @@ class UserSolution {
 		} else {
 			app.avg = 0.0;
 		}
-
+		
 		//app.avg = app.totalNum > 0 ? app.totalScore * 10 / app.totalNum : 0;
 	}
 }
@@ -211,9 +211,7 @@ class Heap {
 	void push(App app) {
 		size++;
 		arr[size] = app;
-
 		updateIdx(app, size);
-
 		up(size);
 	}
 
@@ -228,23 +226,23 @@ class Heap {
 
 	void up(int idx) {
 		while(idx > 1) {
-			if(compare(arr[idx+1], arr[idx])) {
+			if(compare(arr[idx>>1], arr[idx])) {
 				break;
 			}
 
-			swap(idx+1, idx);
-			idx = idx+1;
+			swap(idx>>1, idx);
+			idx = idx>>1;
 		}
 	}
 
 	void down(int idx) {
-		while(idx-1 <= size) {
+		while((idx<<1) <= size) {
 			int mx;
 
-			if(idx-1 == size || compare(arr[idx-1], arr[idx])) {
-				mx = idx - 1;
+			if((idx<<1) == size || compare(arr[idx<<1], arr[(idx<<1)+1])) {
+				mx = idx<<1;
 			} else {
-				mx = idx;
+				mx = (idx<<1) + 1;
 			}
 
 			if(compare(arr[idx], arr[mx])) {
