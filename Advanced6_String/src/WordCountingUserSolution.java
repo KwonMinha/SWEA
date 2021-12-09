@@ -1,12 +1,12 @@
 class WordCountingUserSolution {
 	
 	public static int FindString(int N, String A, int M, String B) {
-		final int MOD = 100000007;
-		final int D = 297;
+		final long MOD = (long) Math.pow(2, 64);
+		final int D = 257; // or 259
+	    long power = 1;
 
         long aHash = 0;
         long bHash = 0;
-        long power = 1;
         
         int count = 0;
 
@@ -21,10 +21,16 @@ class WordCountingUserSolution {
                     }
                 }
             } else {
-                aHash = (D * (aHash - A.charAt(i-1) * power) + A.charAt(i + M - 1)) % MOD;
-                if(aHash < 0) {
-                	aHash += MOD;
-                }
+            	// mod를 100000007, D를 297로 잘 못 잡고 설정함 
+//                aHash = (D * (aHash  - A.charAt(i-1) * power) + A.charAt(i + M - 1)) % MOD;
+//                if(aHash < 0) {
+//                	aHash += MOD;
+//                }
+                
+//                aHash = D * aHash % MOD - D * A.charAt(i-1) * power % MOD + A.charAt(i + M - 1);
+//                aHash %= MOD;
+                
+                aHash = ((D * (aHash - A.charAt(i-1) * power)) + A.charAt(i + M - 1)) % MOD;
             }
        
             if(aHash == bHash) {

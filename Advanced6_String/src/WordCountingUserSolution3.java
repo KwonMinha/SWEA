@@ -17,7 +17,7 @@ class WordCountingUserSolution3 {
 					}
 				}
 			} else {
-				aHash = 2 * (aHash - A.charAt(i - 1) * power) + A.charAt(M - 1 + i);
+				aHash = 2 * (aHash - (A.charAt(i - 1) * power)) + A.charAt(M - 1 + i);
 			}
 			
 			if(aHash == bHash) {
