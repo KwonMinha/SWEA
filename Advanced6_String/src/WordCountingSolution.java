@@ -14,8 +14,7 @@ public class WordCountingSolution {
 			int N = A.length();
 			int M = B.length();
 			
-			int answer = new WordCountingUserSolution
-					().FindString(N, A, M, B);
+			int answer = new WordCountingUserSolution().FindString(N, A, M, B);
 			
 			System.out.println("#"+ tc + " " + answer);
 		}
