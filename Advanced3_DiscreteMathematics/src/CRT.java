@@ -34,10 +34,8 @@ class CRT {
 				remainder[i] = a;
 				number[i] = b;
 			}
-			
-			int k = N;
 
-			sb.append("#" + test_case + " " + crt(k) + "\n");
+			sb.append("#" + test_case + " " + crt(N) + "\n");
 		}
 
 		System.out.println(sb.toString());
