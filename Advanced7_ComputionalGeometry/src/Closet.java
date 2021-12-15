@@ -13,6 +13,17 @@ import java.util.StringTokenizer;
 import java.util.TreeSet;
 
 class Closet {
+	
+	static class Point {
+		long x;
+		long y;
+
+		public Point(long x, long y) {
+			this.x = x;
+			this.y = y;
+		}
+	}
+	
 	static Point[] point;
 
 	public static void main(String[] args) throws IOException {
@@ -103,14 +114,4 @@ class Closet {
 		}
 	};
 
-}
-
-class Point {
-	long x;
-	long y;
-
-	public Point(long x, long y) {
-		this.x = x;
-		this.y = y;
-	}
 }
