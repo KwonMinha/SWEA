@@ -2,7 +2,7 @@
  * @author minha
  * 2021. 11. 12.
  * [8강 1번] 프리랜서 
- * 이분탐색 
+ * 이분탐색 - 풀이 완료 X 
  */
 
 import java.io.BufferedReader;
