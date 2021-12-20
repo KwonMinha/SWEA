@@ -25,10 +25,6 @@ class UserSolution
 	
 	void insert(char mChar)
 	{
-		
-		//System.out.println("cur : " + cursor + ", last : " + lastIdx);
-		
-		
 		System.arraycopy(arr, cursor, arr, cursor+1, lastIdx - cursor);
 		arr[cursor] = mChar;
 		lastIdx++;
@@ -63,15 +59,5 @@ class UserSolution
 		}
 		
 		return result;
-	}
-}
-
-class Node {
-	char data;
-	Node prev;
-	Node next;
-	
-	Node(char data) {
-		this.data = data;
 	}
 }
